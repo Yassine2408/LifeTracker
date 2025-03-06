@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeTrack - Your Digital Planner</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">LifeTrack</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active" data-view="daily">Daily</a></li>
+                <li><a href="#" data-view="weekly">Weekly</a></li>
+                <li><a href="#" data-view="monthly">Monthly</a></li>
+                <li><a href="#" data-view="habits">Habits</a></li>
+                <li><a href="#" data-view="goals">Goals</a></li>
+            </ul>
+            <div class="user-menu">
+                <button id="export-btn">Export PDF</button>
+                <button id="settings-btn"><i class="fas fa-cog"></i></button>
+                <div class="user-profile">
+                    <span id="user-name">User</span>
+                    <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <div class="date-display">
+                <h2 id="current-date">Monday, January 1</h2>
+                <div class="calendar-widget" id="mini-calendar"></div>
+            </div>
+            <div class="quick-add">
+                <h3>Quick Add</h3>
+                <button id="add-task"><i class="fas fa-plus"></i> Task</button>
+                <button id="add-event"><i class="fas fa-plus"></i> Event</button>
+                <button id="add-note"><i class="fas fa-plus"></i> Note</button>
+            </div>
+            <div class="motivation">
+                <h3>Daily Inspiration</h3>
+                <p id="quote-text">"The future depends on what you do today."</p>
+                <p id="quote-author">- Mahatma Gandhi</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="view-container">
+                <!-- Dynamic content will be loaded here -->
+                <div id="daily-view" class="planner-view active">
+                    <h2>Today's Plan</h2>
+                    <div class="time-blocks">
+                        <!-- Time blocks from 6 AM to 10 PM -->
+                    </div>
+                    <div class="task-list">
+                        <h3>Tasks</h3>
+                        <ul id="tasks">
+                            <!-- Tasks will be added here -->
+                        </ul>
+                        <input type="text" id="new-task" placeholder="Add a new task...">
+                    </div>
+                    <div class="notes-section">
+                        <h3>Notes & Reflections</h3>
+                        <textarea id="daily-notes" placeholder="Write your thoughts here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            <div class="settings-options">
+                <div class="setting">
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="nature">Nature</option>
+                        <option value="minimal">Minimal</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="start-day">Week Starts On</label>
+                    <select id="start-day">
+                        <option value="sunday">Sunday</option>
+                        <option value="monday">Monday</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="time-format">Time Format</label>
+                    <select id="time-format">
+                        <option value="12">12-hour</option>
+                        <option value="24">24-hour</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label>Sections to Display</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="show-tasks" checked>
+                        <label for="show-tasks">Tasks</label>
+                        
+                        <input type="checkbox" id="show-notes" checked>
+                        <label for="show-notes">Notes</label>
+                        
+                        <input type="checkbox" id="show-habits" checked>
+                        <label for="show-habits">Habits</label>
+                        
+                        <input type="checkbox" id="show-quotes" checked>
+                        <label for="show-quotes">Quotes</label>
+                    </div>
+                </div>
+            </div>
+            <button id="save-settings">Save Settings</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/planner.js"></script>
+    <script src="js/habits.js"></script>
+    <script src="js/goals.js"></script>
+</body>
+</html> 
