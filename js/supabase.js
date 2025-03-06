@@ -1,9 +1,12 @@
+// Import the Supabase client
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.4/+esm';
+
 // supabase.js - Handles Supabase integration and authentication
 
 // Initialize Supabase client
 const supabaseUrl = 'https://vwhzvnwoimhdqglzzach.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3aHp2bndvaW1oZHFnbHp6YWNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEyODE4MTEsImV4cCI6MjA1Njg1NzgxMX0.gT9JWubVNKZ3EkGDBAvQcTGLFEmBpmhlIpbdSBNxjck';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Check if user is logged in
 async function checkUser() {
@@ -115,4 +118,19 @@ async function deleteData(table, id, userId) {
         console.error(`Error deleting data from ${table}:`, error.message);
         return { success: false, error: error.message };
     }
-} 
+}
+
+// Export all functions and the supabase client
+export {
+    supabase,
+    checkUser,
+    signUp,
+    signIn,
+    signOut,
+    saveData,
+    loadData,
+    deleteData
+}; 
+
+// Example import in another file
+import { supabase, checkUser, signIn, signUp } from './js/supabase.js';
